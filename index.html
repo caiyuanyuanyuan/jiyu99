@@ -3,198 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>我是小锹-福来赞助</title>
+<title>我是星星妹呀</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background-color: #FF00FA;
+    background-color: #FFB6C1; /* 极禹专属少女粉背景 */
     font-family: "Microsoft YaHei", sans-serif;
     overflow: hidden;
     height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
   }
-
-  /* 上部60%区域 */
+  
+  /* ================= 页面大框架（紧凑布局） ================= */
   .top-section {
-    height: 60vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    padding: 0 40px;
   }
+  
   .content-box {
-    width: 95%;
-    height: 80%;
+    width: 100%;
+    max-width: 800px;
+    height: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
   }
-
-  /* 双截棍 - 放大拉长，留出链条空间 */
-  .nunchaku {
-    width: 120px;
-    height: 320px;
+  
+  /* ================= 极禹动物塑（超大 Emoji 互动双向亲亲） ================= */
+  .animal-box {
+    font-size: 130px;
+    cursor: pointer;
+    user-select: none;
     position: relative;
+    transition: transform 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
   }
-  .stick {
-    width: 16px;
-    height: 110px;
-    background: 
-      radial-gradient(circle, #333 2px, transparent 2px) 0 0 / 8px 8px,
-      linear-gradient(#222, #111);
-    border-radius: 8px;
-    position: absolute;
-    left: 52px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  
+  /* 1. 猪头（张极）亲狗钩轨迹 */
+  #pigActor.kiss-action {
+    animation: pigKiss 0.5s ease-in-out;
   }
-  .stick.top { top: 0; transform: rotate(-15deg); transform-origin: bottom center; }
-  .stick.bottom { bottom: 0; transform: rotate(15deg); transform-origin: top center; }
-  /* 加粗高亮链条 */
-  .chain {
-    position: absolute;
-    top: 110px;
-    left: 56px;
-    width: 8px;
-    height: 100px;
-    background: 
-      radial-gradient(circle, #ddd 3px, transparent 3px) 0 0 / 8px 8px,
-      linear-gradient(#aaa, #666);
-    border-radius: 4px;
+  @keyframes pigKiss {
+    0% { transform: scale(1) translateX(0) rotate(0deg); }
+    30% { transform: scale(1.1) translateX(-30px) rotate(-15deg); }
+    65% { transform: scale(1.3) translateX(260px) translateY(-20px) rotate(15deg); }
+    100% { transform: scale(1) translateX(0) rotate(0deg); }
   }
 
-  /* 可爱铲子 */
-  .shovel {
-    width: 140px;
-    height: 280px;
-    position: relative;
+  /* 2. 狗钩（左航）亲小猪轨迹 */
+  #dogTarget.kiss-back-action {
+    animation: dogKissBack 0.5s ease-in-out;
   }
-  .shovel-handle {
-    width: 14px;
-    height: 140px;
-    background: 
-      radial-gradient(circle, #8B4513 2px, transparent 2px) 0 0 / 7px 7px,
-      linear-gradient(#A0522D, #8B4513);
-    border-radius: 7px;
-    position: absolute;
-    top: 0;
-    left: 63px;
-  }
-  .shovel-head {
-    width: 100px;
-    height: 80px;
-    background: 
-      radial-gradient(circle, #C0C0C0 2px, transparent 2px) 0 0 / 8px 8px,
-      linear-gradient(#E8E8E8, #A8A8A8);
-    border-radius: 0 0 50px 50px;
-    position: absolute;
-    bottom: 40px;
-    left: 20px;
-    border: 3px solid #888;
-  }
-  /* 可爱腮红 */
-  .shovel-head::before,
-  .shovel-head::after {
-    content: "";
-    position: absolute;
-    width: 18px;
-    height: 10px;
-    background: #FFB6C1;
-    border-radius: 50%;
-    top: 25px;
-    opacity: 0.7;
-  }
-  .shovel-head::before { left: 15px; }
-  .shovel-head::after { right: 15px; }
-  /* 可爱眼睛 */
-  .shovel-eyes {
-    position: absolute;
-    top: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-size: 20px;
+  @keyframes dogKissBack {
+    0% { transform: scale(1) translateX(0) rotate(0deg); }
+    30% { transform: scale(1.1) translateX(30px) rotate(15deg); }
+    65% { transform: scale(1.3) translateX(-260px) translateY(-20px) rotate(-15deg); }
+    100% { transform: scale(1) translateX(0) rotate(0deg); }
   }
 
-  /* 中间旋转文字 */
+  /* 被亲一方的害羞转圈动画 */
+  .animal-box.shy-action {
+    animation: animalShy 0.6s ease-in-out;
+  }
+  @keyframes animalShy {
+    0% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0 rgba(255,20,147,0)); }
+    30% { transform: scale(1.3) rotate(180deg); }
+    60% { transform: scale(1.2) rotate(360deg); filter: drop-shadow(0 0 20px #FF1493); }
+    80% { transform: scale(1.1) rotate(350deg); }
+    100% { transform: scale(1) rotate(360deg); }
+  }
+
+  /* ================= 中间旋转文字（我是星星妹呀：橘绿交替） ================= */
   .circle-text-wrap {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 260px;
-    height: 260px;
+    width: 320px;
+    height: 320px;
   }
+  
+  /* 粉色/流金发光星星 */
   .center-emoji {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    font-size: 80px;
+    font-size: 110px;
     z-index: 2;
-    animation: bounce 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px #FFF700) drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+    animation: starBounce 1.2s ease-in-out infinite;
   }
-  @keyframes bounce {
+  @keyframes starBounce {
     0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.15); }
+    50% { transform: translate(-50%, -50%) scale(1.18); }
   }
-
+  
   .rotate-ring {
     width: 100%;
     height: 100%;
     position: relative;
-    animation: spin 4s linear infinite;
+    animation: spin 6s linear infinite;
   }
   @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+  
+  /* 字号翻倍，橘绿交替，加黑色硬朗阴影 */
   .rotate-text {
     position: absolute;
-    font-size: 42px;
-    font-weight: bold;
+    font-size: 72px; 
+    font-weight: 900;
     left: 50%;
     top: 50%;
     transform-origin: center center;
+    text-shadow: 3px 3px 0px #000;
   }
-  .text-1 { color: #FFD700; transform: translate(-50%, -130px); }
-  .text-2 { color: #FFD700; transform: translate(90px, -50%); }
-  .text-3 { color: #FF0000; transform: translate(-50%, 90px); }
-  .text-4 { color: #FF0000; transform: translate(-130px, -50%); }
-
-  /* 中部20%区域 */
+  .text-1 { color: #FF7F00; transform: translate(-50%, -170px); } /* 我 - 橘 */
+  .text-2 { color: #00FF00; transform: translate(110px, -110px); } /* 是 - 绿 */
+  .text-3 { color: #FF7F00; transform: translate(110px, 40px); }   /* 星 - 橘 */
+  .text-4 { color: #00FF00; transform: translate(-50%, 100px); }   /* 星 - 绿 */
+  .text-5 { color: #FF7F00; transform: translate(-200px, 40px); }  /* 妹 - 橘 */
+  .text-6 { color: #00FF00; transform: translate(-200px, -110px); }/* 呀 - 绿 */
+  
+  /* ================= 中部极禹名场面文本区 ================= */
   .middle-section {
-    height: 20vh;
+    height: 28vh; /* 略微拔高腾出空间给神仙文案 */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
-  }
-  .fan-text {
-    font-size: 32px;
-    font-weight: bold;
-    text-align: center;
-    animation: pulseColor 2s ease-in-out infinite;
-  }
-  .fan-code {
-    font-size: 26px;
-    font-family: "Courier New", monospace;
-    animation: pulseColor 2s ease-in-out infinite reverse;
-    letter-spacing: 3px;
-  }
-  @keyframes pulseColor {
-    0% { color: #FFFF00; transform: scale(1); }
-    25% { color: #00FFFF; transform: scale(1.15); }
-    50% { color: #00FF00; transform: scale(1); }
-    75% { color: #FF00FF; transform: scale(1.15); }
-    100% { color: #FFFF00; transform: scale(1); }
+    padding: 0 10px;
+    position: relative;
   }
 
-  /* 底部20%区域 */
+  /* 💎 新增：“陪你把异乡走成故乡” 专属神仙绝美视觉样式 */
+  .hometown-text {
+    font-size: 42px;
+    font-weight: 900;
+    text-align: center;
+    letter-spacing: 2px;
+    /* 极光霓虹流光渐变效果 */
+    background: linear-gradient(90deg, #FF7F00, #fff, #00FF00, #fff, #FF7F00);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: glowStream 3s linear infinite;
+    filter: drop-shadow(0px 2px 5px rgba(0, 0, 0, 0.4));
+    margin-bottom: 5px;
+    z-index: 5;
+  }
+  @keyframes glowStream {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .fan-text {
+    font-size: 28px; 
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: jiyuColor 2.5s ease-in-out infinite;
+    z-index: 5;
+  }
+  .fan-code {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    animation: jiyuColor 2.5s ease-in-out infinite reverse;
+    z-index: 5;
+  }
+  @keyframes jiyuColor {
+    0% { color: #FF7F00; transform: scale(1); }
+    50% { color: #00FF00; transform: scale(1.05); }
+    100% { color: #FF7F00; transform: scale(1); }
+  }
+
+  /* 极禹99 橘绿交替横向弹幕 */
+  .danmaku-container {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0.35;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  .danmaku-top { top: -10px; }
+  .danmaku-bottom { bottom: -10px; }
+  
+  .danmaku-track {
+    display: inline-block;
+    animation: marquee 12s linear infinite;
+  }
+  .danmaku-track.reverse {
+    animation: marqueeReverse 12s linear infinite;
+  }
+  .danmaku-track span:nth-child(odd) { color: #FF7F00; text-shadow: 1px 1px 1px #000; }
+  .danmaku-track span:nth-child(even) { color: #00FF00; text-shadow: 1px 1px 1px #000; }
+
+  @keyframes marquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
+  }
+  @keyframes marqueeReverse {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
+  }
+  
+  /* ================= 底部互动区 ================= */
   .bottom-section {
-    height: 20vh;
+    height: 22vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -202,48 +234,50 @@
     gap: 20px;
   }
   .question {
-    font-size: 36px;
+    font-size: 42px;
     font-weight: bold;
     color: #fff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
   }
   .btn-group {
     display: flex;
-    gap: 60px;
+    gap: 80px;
   }
   .btn {
-    padding: 12px 30px;
-    font-size: 24px;
+    padding: 15px 45px;
+    font-size: 28px;
     border: none;
-    border-radius: 30px;
+    border-radius: 40px;
     cursor: pointer;
     font-weight: bold;
     transition: all 0.3s;
     background: #fff;
-    color: #FF00FA;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: #FF1493;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
   }
   .btn:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transform: scale(1.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
   }
-
-  /* 谢谢你弹窗效果 */
+  
+  /* 喜欢弹窗 */
   .thank-you {
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%) scale(0);
-    font-size: 80px;
+    font-size: 90px;
     font-weight: bold;
     color: #fff;
     text-shadow: 
-      0 0 10px #FFD700,
-      0 0 20px #FFD700,
-      0 0 30px #FF69B4;
+      0 0 15px #FF7F00,
+      0 0 25px #FF00FF,
+      0 0 40px #00FF00;
     z-index: 100;
     pointer-events: none;
     transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    text-align: center;
+    width: 100%;
   }
   .thank-you.show {
     transform: translate(-50%, -50%) scale(1);
@@ -254,193 +288,230 @@
     50% { transform: translate(-50%, -50%) rotate(5deg) scale(1.05); }
   }
 
-  /* ========== 手机适配媒体查询 ========== */
-  @media screen and (max-width: 768px) {
-    /* 双截棍同步加高，链条完整露出 */
-    .nunchaku {
-      width: 70px;
-      height: 190px;
-    }
-    .stick {
-      width: 12px;
-      height: 65px;
-      left: 29px;
-    }
-    .chain {
-      top: 65px;
-      left: 31px;
-      width: 6px;
-      height: 60px;
-      background: radial-gradient(circle, #ddd 2px, transparent 2px) 0 0 / 6px 6px, linear-gradient(#aaa, #666);
-    }
-
-    .shovel {
-      width: 80px;
-      height: 160px;
-    }
-    .shovel-handle {
-      width: 10px;
-      height: 80px;
-      left: 35px;
-    }
-    .shovel-head {
-      width: 60px;
-      height: 48px;
-      left: 12px;
-      bottom: 24px;
-    }
-    .shovel-head::before, .shovel-head::after {
-      width: 10px;
-      height: 6px;
-      top: 14px;
-    }
-    .shovel-eyes {
-      font-size: 14px;
-      top: 6px;
-    }
-
-    /* 中间旋转圆环缩小 */
-    .circle-text-wrap {
-      width: 160px;
-      height: 160px;
-    }
-    .center-emoji {
-      font-size: 48px;
-    }
-    .rotate-text {
-      font-size: 26px;
-    }
-    .text-1 { transform: translate(-50%, -80px); }
-    .text-2 { transform: translate(55px, -50%); }
-    .text-3 { transform: translate(-50%, 55px); }
-    .text-4 { transform: translate(-80px, -50%); }
-
-    /* 中间文字缩小 */
-    .fan-text {
-      font-size: 20px;
-      padding: 0 10px;
-    }
-    .fan-code {
-      font-size: 16px;
-    }
-
-    /* 底部文字按钮 */
-    .question {
-      font-size: 24px;
-    }
-    .btn-group {
-      gap: 25px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn {
-      padding: 10px 22px;
-      font-size: 18px;
-    }
-
-    /* 弹窗文字缩小 */
-    .thank-you {
-      font-size: 42px;
-      padding: 0 10px;
-      text-align: center;
-    }
+  /* 独立爆开心脏特效 */
+  .burst-heart {
+    position: absolute;
+    font-size: 45px;
+    pointer-events: none;
+    animation: heartFloat 0.8s ease-out forwards;
+    z-index: 100;
   }
+  @keyframes heartFloat {
+    0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
+    100% { transform: translate(var(--x), var(--y)) scale(1.6); opacity: 0; }
+  }
+  
+  /* ================= 手机端精准适配 ================= */
+  @media screen and (max-width: 768px) {
+    .top-section { padding: 0 20px; }
+    .animal-box { font-size: 85px; }
+    
+    /* 手机端双向路径微调 */
+    @keyframes pigKiss {
+      0% { transform: scale(1) translateX(0); }
+      30% { transform: scale(1.1) translateX(-15px); }
+      65% { transform: scale(1.2) translateX(150px) translateY(-10px); }
+      100% { transform: scale(1) translateX(0); }
+    }
+    @keyframes dogKissBack {
+      0% { transform: scale(1) translateX(0); }
+      30% { transform: scale(1.1) translateX(15px); }
+      65% { transform: scale(1.2) translateX(-150px) translateY(-10px); }
+      100% { transform: scale(1) translateX(0); }
+    }
 
-  /* 超小屏手机（480px以下） */
+    .circle-text-wrap { width: 220px; height: 220px; }
+    .center-emoji { font-size: 75px; }
+    .rotate-text { font-size: 44px; }
+    .text-1 { transform: translate(-50%, -120px); }
+    .text-2 { transform: translate(70px, -80px); }
+    .text-3 { transform: translate(70px, 20px); }
+    .text-4 { transform: translate(-50%, 65px); }
+    .text-5 { transform: translate(-130px, 20px); }
+    .text-6 { transform: translate(-130px, -80px); }
+    
+    .hometown-text { font-size: 26px; }
+    .fan-text { font-size: 18px; }
+    .fan-code { font-size: 16px; }
+    .question { font-size: 30px; }
+    .btn { padding: 12px 30px; font-size: 22px; }
+    .thank-you { font-size: 54px; }
+    .danmaku-container { font-size: 16px; }
+  }
+  
   @media screen and (max-width: 480px) {
-    .content-box {
-      width: 98%;
+    .animal-box { font-size: 70px; }
+    @keyframes pigKiss {
+      0% { transform: scale(1) translateX(0); }
+      30% { transform: scale(1.1) translateX(-10px); }
+      65% { transform: scale(1.2) translateX(110px) translateY(-5px); }
+      100% { transform: scale(1) translateX(0); }
     }
-    .nunchaku {
-      width: 55px;
-      height: 150px;
+    @keyframes dogKissBack {
+      0% { transform: scale(1) translateX(0); }
+      30% { transform: scale(1.1) translateX(10px); }
+      65% { transform: scale(1.2) translateX(-110px) translateY(-5px); }
+      100% { transform: scale(1) translateX(0); }
     }
-    .chain {
-      width: 5px;
-      height: 48px;
-      left: 24px;
-      top: 55px;
-      background: radial-gradient(circle, #ddd 1.8px, transparent 1.8px) 0 0 / 5px 5px, linear-gradient(#aaa, #666);
-    }
-    .shovel {
-      width: 65px;
-      height: 130px;
-    }
-    .circle-text-wrap {
-      width: 130px;
-      height: 130px;
-    }
-    .center-emoji {
-      font-size: 38px;
-    }
-    .rotate-text {
-      font-size: 22px;
-    }
-    .fan-text {
-      font-size: 16px;
-    }
-    .question {
-      font-size: 20px;
-    }
-    .btn {
-      padding: 8px 18px;
-      font-size: 16px;
-    }
+    .circle-text-wrap { width: 170px; height: 170px; }
+    .center-emoji { font-size: 60px; }
+    .rotate-text { font-size: 36px; }
+    .text-1 { transform: translate(-50%, -95px); }
+    .text-2 { transform: translate(55px, -65px); }
+    .text-3 { transform: translate(55px, 15px); }
+    .text-4 { transform: translate(-50%, 50px); }
+    .text-5 { transform: translate(-105px, 15px); }
+    .text-6 { transform: translate(-105px, -65px); }
+    .hometown-text { font-size: 22px; }
+    .fan-text { font-size: 16px; }
+    .fan-code { font-size: 14px; }
+    .question { font-size: 24px; }
+    .btn { padding: 10px 24px; font-size: 18px; }
   }
 </style>
 </head>
 <body>
 
+  <!-- 上部区域 -->
   <div class="top-section">
     <div class="content-box">
-      <!-- 双截棍 -->
-      <div class="nunchaku">
-        <div class="stick top"></div>
-        <div class="chain"></div>
-        <div class="stick bottom"></div>
-      </div>
-
-      <!-- 中间旋转文字 -->
+      <!-- 极地小猪（张极 - 点击去亲小狗） -->
+      <div class="animal-box" id="pigActor" onclick="pigKissDog()">🐷</div>
+      
+      <!-- 中间旋转文字（我是星星妹呀、中心流金星星） -->
       <div class="circle-text-wrap">
-        <div class="center-emoji">😈</div>
+        <div class="center-emoji">🌟</div>
         <div class="rotate-ring">
           <div class="rotate-text text-1">我</div>
           <div class="rotate-text text-2">是</div>
-          <div class="rotate-text text-3">小</div>
-          <div class="rotate-text text-4">锹</div>
+          <div class="rotate-text text-3">星</div>
+          <div class="rotate-text text-4">星</div>
+          <div class="rotate-text text-5">妹</div>
+          <div class="rotate-text text-6">呀</div>
         </div>
       </div>
+      
+      <!-- 垂耳小狗（左航 - 点击也可以去亲小猪） -->
+      <div class="animal-box" id="dogTarget" onclick="dogKissPig()">🐶</div>
+    </div>
+  </div>
+  
+  <!-- 中部区域 -->
+  <div class="middle-section">
+    <!-- 极禹99横向滚动弹幕（正向） -->
+    <div class="danmaku-container danmaku-top">
+      <div class="danmaku-track">
+        <span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span>
+        <span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span>
+      </div>
+    </div>
 
-      <!-- 可爱铲子 -->
-      <div class="shovel">
-        <div class="shovel-handle"></div>
-        <div class="shovel-head">
-          <div class="shovel-eyes">•‿•</div>
-        </div>
+    <!-- 💎 极禹至高绝美圣经 -->
+    <div class="hometown-text">陪你把异乡走成故乡</div>
+
+    <!-- 极禹名场面细节案 -->
+    <div class="fan-text">这感情不值得我犹豫！</div>
+    <div class="fan-code">情侣飞车，我和张极玩过。</div>
+
+    <!-- 极禹99横向滚动弹幕（反向） 桔色爱心-->
+    <div class="danmaku-container danmaku-bottom">
+      <div class="danmaku-track reverse">
+        <span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span>
+        <span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span>
       </div>
     </div>
   </div>
-
-  <div class="middle-section">
-    <div class="fan-text">朱苏狠狠做，天天做，夜夜做。</div>
-    <div class="fan-code">zzxcdsxhjl</div>
-  </div>
-
+  
+  <!-- 底部区域 -->
   <div class="bottom-section">
-    <div class="question">你喜欢我嘛</div>
+    <div class="question">你喜欢极禹嘛</div>
     <div class="btn-group">
       <button class="btn" onclick="likeYes()">喜欢</button>
       <button class="btn" onclick="likeNo()">不喜欢</button>
     </div>
   </div>
-
-  <div class="thank-you" id="thankYou">谢谢你！💖</div>
+  
+  <!-- 喜欢弹窗 -->
+  <div class="thank-you" id="thankYou">谢谢你！💖<br>🧡极禹99💚</div>
 
 <script>
-  function likeNo() {
-    alert("我管你喜不喜欢😈");
+  // 清理所有动画类的辅助函数
+  function clearAnimations() {
+    const pig = document.getElementById("pigActor");
+    const dog = document.getElementById("dogTarget");
+    pig.classList.remove("kiss-action", "shy-action");
+    dog.classList.remove("kiss-back-action", "shy-action");
+    void pig.offsetWidth;
+    void dog.offsetWidth;
   }
 
+  // 1. 小猪主动去亲小狗
+  function pigKissDog() {
+    const pig = document.getElementById("pigActor");
+    const dog = document.getElementById("dogTarget");
+    
+    clearAnimations();
+    
+    pig.classList.add("kiss-action");
+    
+    // 击中时刻爆爱心，小狗羞红转圈
+    setTimeout(() => {
+      dog.classList.add("shy-action");
+      createHeartBurst(dog);
+    }, 320);
+  }
+
+  // 2. 小狗主动去亲小猪（新增双向奔赴）
+  function dogKissPig() {
+    const pig = document.getElementById("pigActor");
+    const dog = document.getElementById("dogTarget");
+    
+    clearAnimations();
+    
+    dog.classList.add("kiss-back-action");
+    
+    // 击中时刻爆爱心，小猪羞红转圈
+    setTimeout(() => {
+      pig.classList.add("shy-action");
+      createHeartBurst(pig);
+    }, 320);
+  }
+
+  // 生成满屏爆开的爱心和闪烁特效
+  function createHeartBurst(targetElement) {
+    const rect = targetElement.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const emojis = ['❤️', '💖', '💝', '✨', '🧡', '💚', '🌟'];
+
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'burst-heart';
+      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      heart.style.left = centerX + 'px';
+      heart.style.top = centerY + 'px';
+      
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 80 + Math.random() * 150;
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+      
+      heart.style.setProperty('--x', `${x}px`);
+      heart.style.setProperty('--y', `${y}px`);
+      
+      document.body.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 800);
+    }
+  }
+
+  // 不喜欢——地道方言整蛊
+  function likeNo() {
+    alert("不喜欢极你遭了噻～");
+  }
+  
   function likeYes() {
     const el = document.getElementById("thankYou");
     el.classList.add("show");
@@ -449,6 +520,5 @@
     }, 3000);
   }
 </script>
-
 </body>
 </html>
