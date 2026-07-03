@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>我是星星妹呀</title>
+<title>我是星星妹呀 - 极禹专属纯净版</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -14,6 +14,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
   }
   
   /* ================= 页面大框架 ================= */
@@ -24,6 +25,7 @@
     align-items: center;
     position: relative;
     padding: 0 40px;
+    z-index: 5;
   }
   
   .content-box {
@@ -48,8 +50,30 @@
     align-items: center;
     z-index: 10;
   }
+
+  /* 主动去中间深度贴贴的动画类 */
+  .pig-to-center {
+    animation: pigCenterKiss 1.2s ease-in-out forwards;
+  }
+  .dog-to-center {
+    animation: dogCenterKiss 1.2s ease-in-out forwards;
+  }
+
+  @keyframes pigCenterKiss {
+    0% { transform: translateX(0) scale(1); }
+    40% { transform: translateX(calc(50vw - 180px)) scale(1.3) rotate(15deg); }
+    70% { transform: translateX(calc(50vw - 200px)) scale(1.4) rotate(25deg); }
+    100% { transform: translateX(calc(50vw - 210px)) scale(1.3) rotate(15deg); }
+  }
+
+  @keyframes dogCenterKiss {
+    0% { transform: translateX(0) scale(1); }
+    40% { transform: translateX(calc(-50vw + 180px)) scale(1.3) rotate(-15deg); }
+    70% { transform: translateX(calc(-50vw + 200px)) scale(1.4) rotate(-25deg); }
+    100% { transform: translateX(calc(-50vw + 210px)) scale(1.3) rotate(-15deg); }
+  }
   
-  /* 小猪主动亲 */
+  /* 原有的小猪主动亲 */
   #pigActor.kiss-action {
     animation: pigKiss 0.5s ease-in-out;
   }
@@ -60,7 +84,7 @@
     100% { transform: scale(1) translateX(0) rotate(0deg); }
   }
 
-  /* 小狗主动亲 */
+  /* 原有的小狗主动亲 */
   #dogTarget.kiss-back-action {
     animation: dogKissBack 0.5s ease-in-out;
   }
@@ -76,14 +100,13 @@
     animation: animalShy 0.6s ease-in-out;
   }
   @keyframes animalShy {
-    0% { transform: scale(1) rotate(0deg); filter: drop-shadow(0 0 0 rgba(255,20,147,0)); }
+    0% { transform: scale(1) rotate(0deg); }
     30% { transform: scale(1.3) rotate(180deg); }
     60% { transform: scale(1.2) rotate(360deg); filter: drop-shadow(0 0 20px #FF1493); }
-    80% { transform: scale(1.1) rotate(350deg); }
     100% { transform: scale(1) rotate(360deg); }
   }
 
-  /* ================= 中间旋转文字（我是星星妹呀：橘绿交替） ================= */
+  /* ================= 中间旋转文字（我是星星妹呀） ================= */
   .circle-text-wrap {
     position: absolute;
     left: 50%;
@@ -93,7 +116,6 @@
     height: 320px;
   }
   
-  /* 💖 核心修改：全新定制的“特浓魅影粉”发光星星，与背景粉色完美拉开对比 💖 */
   .center-emoji {
     position: absolute;
     left: 50%;
@@ -101,8 +123,7 @@
     transform: translate(-50%, -50%);
     font-size: 110px;
     z-index: 2;
-    color: #FF1493; /* 深邃浓郁的深粉色 */
-    /* 强烈的白色外发光和深色硬朗阴影，确保其在淡粉色背景中极其突出 */
+    color: #FF1493;
     filter: drop-shadow(0 0 12px #FFF) drop-shadow(0 0 25px #FF69B4) drop-shadow(0 6px 12px rgba(0,0,0,0.35));
     animation: pinkStarBounce 1.2s ease-in-out infinite;
   }
@@ -122,7 +143,6 @@
     to { transform: rotate(360deg); }
   }
   
-  /* 字号翻倍，橘绿交替，加黑色硬朗阴影 */
   .rotate-text {
     position: absolute;
     font-size: 72px; 
@@ -132,12 +152,12 @@
     transform-origin: center center;
     text-shadow: 3px 3px 0px #000;
   }
-  .text-1 { color: #FF7F00; transform: translate(-50%, -170px); } /* 我 - 橘 */
-  .text-2 { color: #00FF00; transform: translate(110px, -110px); } /* 是 - 绿 */
-  .text-3 { color: #FF7F00; transform: translate(110px, 40px); }   /* 星 - 橘 */
-  .text-4 { color: #00FF00; transform: translate(-50%, 100px); }   /* 星 - 绿 */
-  .text-5 { color: #FF7F00; transform: translate(-200px, 40px); }  /* 妹 - 橘 */
-  .text-6 { color: #00FF00; transform: translate(-200px, -110px); }/* 呀 - 绿 */
+  .text-1 { color: #FF7F00; transform: translate(-50%, -170px); }
+  .text-2 { color: #00FF00; transform: translate(110px, -110px); }
+  .text-3 { color: #FF7F00; transform: translate(110px, 40px); }
+  .text-4 { color: #00FF00; transform: translate(-50%, 100px); }
+  .text-5 { color: #FF7F00; transform: translate(-200px, 40px); }
+  .text-6 { color: #00FF00; transform: translate(-200px, -110px); }
   
   /* ================= 中部极禹名场面文本区 ================= */
   .middle-section {
@@ -149,9 +169,9 @@
     gap: 10px;
     padding: 0 10px;
     position: relative;
+    z-index: 5;
   }
 
-  /* “陪你把异乡走成故乡” 专属神仙绝美视觉样式 */
   .hometown-text {
     font-size: 42px;
     font-weight: 900;
@@ -171,7 +191,7 @@
     100% { background-position: 200% center; }
   }
 
-  .fan-text {
+  .fan-text, .fan-code {
     font-size: 28px; 
     font-weight: bold;
     text-align: center;
@@ -181,10 +201,7 @@
   }
   .fan-code {
     font-size: 24px;
-    font-weight: bold;
-    text-align: center;
     animation: jiyuColor 2.5s ease-in-out infinite reverse;
-    z-index: 5;
   }
   @keyframes jiyuColor {
     0% { color: #FF7F00; transform: scale(1); }
@@ -192,7 +209,6 @@
     100% { color: #FF7F00; transform: scale(1); }
   }
 
-  /* 极禹99横向滚动弹幕 */
   .danmaku-container {
     position: absolute;
     width: 100%;
@@ -233,6 +249,7 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
+    z-index: 5;
   }
   .question {
     font-size: 42px;
@@ -270,10 +287,7 @@
     font-size: 90px;
     font-weight: bold;
     color: #fff;
-    text-shadow: 
-      0 0 15px #FF7F00,
-      0 0 25px #FF00FF,
-      0 0 40px #00FF00;
+    text-shadow: 0 0 15px #FF7F00, 0 0 25px #FF00FF, 0 0 40px #00FF00;
     z-index: 100;
     pointer-events: none;
     transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -289,7 +303,7 @@
     50% { transform: translate(-50%, -50%) rotate(5deg) scale(1.05); }
   }
 
-  /* 散射爱心 */
+  /* 散射爱心与钻石粒子 */
   .burst-heart {
     position: absolute;
     font-size: 45px;
@@ -301,12 +315,116 @@
     0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
     100% { transform: translate(var(--x), var(--y)) scale(1.6); opacity: 0; }
   }
+
+  /* ================= ☁️ 真正 ☁️ Emoji 完美正中心云朵气泡 ================= */
+  .cloud-bubble {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: auto;
+    cursor: pointer;
+    user-select: none;
+    z-index: 2;
+    animation: floatBubble var(--duration) linear forwards;
+  }
+  
+  /* ☁️ 云朵 Emoji 背景层 */
+  .cloud-bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); /* 绝对居中于容器 */
+    font-size: 165px; /* 超大纯白云朵 */
+    line-height: 1;
+    color: #FFFFFF; /* 保证原生Emoji在支持的机型上滤出纯白偏好 */
+    opacity: 0.95;
+    /* 柔和云朵倒影阴影 */
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12)); 
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* 舞台文字层：强制固定在云朵真正的物理中心点 */
+  .bubble-content {
+    position: absolute;
+    left: 50%;
+    top: 45%; /* 物理视觉修正微调，完美正中心 */
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 120px; /* 锁死最大宽度防穿帮 */
+  }
+
+  .bubble-time {
+    font-size: 11px;
+    color: #FF4500;
+    font-weight: 900;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 1px 5px;
+    border-radius: 8px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+  }
+
+  .bubble-title {
+    font-size: 14px;
+    color: #222222;
+    font-weight: 900;
+    /* 白边双层勾边，确保文字在白云中清清楚楚 */
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff;
+    line-height: 1.25;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @keyframes floatBubble {
+    0% {
+      transform: translateY(var(--start-y, 110vh)) translateX(0) scale(0.9);
+      opacity: 0;
+    }
+    5% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20vh) translateX(var(--drift)) scale(1.05);
+      opacity: 0;
+    }
+  }
+
+  /* 悬停微动效 */
+  .cloud-bubble:hover {
+    transform: scale(1.18) !important;
+    z-index: 20;
+    transition: transform 0.15s;
+  }
   
   /* ================= 手机端精准适配 ================= */
   @media screen and (max-width: 768px) {
     .top-section { padding: 0 20px; }
     .animal-box { font-size: 85px; }
     
+    @keyframes pigCenterKiss {
+      0% { transform: translateX(0) scale(1); }
+      100% { transform: translateX(calc(50vw - 110px)) scale(1.2) rotate(15deg); }
+    }
+    @keyframes dogCenterKiss {
+      0% { transform: translateX(0) scale(1); }
+      100% { transform: translateX(calc(-50vw + 110px)) scale(1.2) rotate(-15deg); }
+    }
+
     @keyframes pigKiss {
       0% { transform: scale(1) translateX(0); }
       30% { transform: scale(1.1) translateX(-15px); }
@@ -336,22 +454,23 @@
     .question { font-size: 30px; }
     .btn { padding: 12px 30px; font-size: 22px; }
     .thank-you { font-size: 54px; }
-    .danmaku-container { font-size: 16px; }
+
+    .cloud-bubble { width: 120px; height: 120px; }
+    .cloud-bg { font-size: 130px; }
+    .bubble-content { width: 95px; top: 44%; }
+    .bubble-title { font-size: 11px; }
+    .bubble-time { font-size: 9px; }
   }
   
   @media screen and (max-width: 480px) {
     .animal-box { font-size: 70px; }
-    @keyframes pigKiss {
-      0% { transform: scale(1) translateX(0); }
-      30% { transform: scale(1.1) translateX(-10px); }
-      65% { transform: scale(1.2) translateX(110px) translateY(-5px); }
-      100% { transform: scale(1) translateX(0); }
+    @keyframes pigCenterKiss {
+      0% { transform: translateX(0) scale(1); }
+      100% { transform: translateX(calc(50vw - 85px)) scale(1.1) rotate(15deg); }
     }
-    @keyframes dogKissBack {
-      0% { transform: scale(1) translateX(0); }
-      30% { transform: scale(1.1) translateX(10px); }
-      65% { transform: scale(1.2) translateX(-110px) translateY(-5px); }
-      100% { transform: scale(1) translateX(0); }
+    @keyframes dogCenterKiss {
+      0% { transform: translateX(0) scale(1); }
+      100% { transform: translateX(calc(-50vw + 85px)) scale(1.1) rotate(-15deg); }
     }
     .circle-text-wrap { width: 170px; height: 170px; }
     .center-emoji { font-size: 60px; }
@@ -380,7 +499,6 @@
       
       <!-- 中间旋转文字 -->
       <div class="circle-text-wrap">
-        <!-- 核心修改：粉色发光星星 🌟 -->
         <div class="center-emoji">★</div>
         <div class="rotate-ring">
           <div class="rotate-text text-1">我</div>
@@ -399,7 +517,6 @@
   
   <!-- 中部区域 -->
   <div class="middle-section">
-    <!-- 极禹99横向滚动弹幕（正向） -->
     <div class="danmaku-container danmaku-top">
       <div class="danmaku-track">
         <span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span>
@@ -407,18 +524,14 @@
       </div>
     </div>
 
-    <!-- 极禹至高绝美圣经 -->
     <div class="hometown-text">陪你把异乡走成故乡</div>
-
-    <!-- 极禹名场面细节 -->
     <div class="fan-text">情侣飞车，我和张极玩过。</div>
     <div class="fan-code">这感情不值得我犹豫！</div>
 
-    <!-- 极禹99横向滚动弹幕（反向） -->
     <div class="danmaku-container danmaku-bottom">
       <div class="danmaku-track reverse">
-        <span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span>
-        <span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span>
+        <span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span>
+        <span>极禹99 💚🧡 </span><span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 💚🧡 </span>
       </div>
     </div>
   </div>
@@ -436,16 +549,105 @@
   <div class="thank-you" id="thankYou">谢谢你！💖</div>
 
 <script>
+  // ================= 1. 双人舞台数据 =================
+  const stages = [
+    { time: "2018试训时期", title: "《泡沫》" },
+    { time: "2018.8.29", title: "《改变自己》" },
+    { time: "2020.7.3", title: "《Because of you》" },
+    { time: "2020.11.6", title: "《只对你有感觉》" },
+    { time: "2022.2.3", title: "《R&B all right》" },
+    { time: "2022.10.24", title: "《决爱》" },
+    { time: "2023.1.26", title: "《流浪记》" },
+    { time: "2023.4.16", title: "《Rolling In The Deep》" },
+    { time: "2023.8.13", title: "《连名带姓》" },
+    { time: "2024.2.3/4", title: "《勇敢》" },
+    { time: "2024.2.3/4", title: "《Bite me》" },
+    { time: "2024.8.10", title: "《笼》" },
+    { time: "2024.8.25", title: "《Paris In The Rain》" },
+    { time: "2024.8.25", title: "《Senorita》" },
+    { time: "2025.5.2", title: "《不值得》" },
+    { time: "2025.8.30", title: "《过》" },
+    { time: "2026.2.1", title: "《暗香》" }
+  ];
+
+  let stageIndex = 0;
+
+  // 发射单朵云，通过 isInitial 参数判断是否需要一开始就显示在半空中
+  function launchSingleCloud(isInitial = false) {
+    const stage = stages[stageIndex];
+    stageIndex = (stageIndex + 1) % stages.length;
+
+    const bubble = document.createElement('div');
+    bubble.className = 'cloud-bubble';
+    
+    const leftPercent = 5 + Math.random() * 70; 
+    const driftPx = (Math.random() - 0.5) * 140;
+    const duration = 9 + Math.random() * 5; // 速度调快到 9s-14s 飘完
+
+    bubble.style.left = leftPercent + '%';
+    bubble.style.setProperty('--drift', driftPx + 'px');
+    bubble.style.setProperty('--duration', duration + 's');
+
+    // 核心更改：如果是一开始初始化的云朵，让它直接随机分配在页面不同的高度上(15vh 到 85vh 之间)
+    if (isInitial) {
+      const startY = 15 + Math.random() * 70;
+      bubble.style.setProperty('--start-y', startY + 'vh');
+    } else {
+      bubble.style.setProperty('--start-y', '110vh');
+    }
+
+    // 结构升级：利用绝对定位，强行把文字框锁死在 ☁️ 的核心中央
+    bubble.innerHTML = `
+      <div class="cloud-bg">☁️</div>
+      <div class="bubble-content">
+        <span class="bubble-time">${stage.time}</span>
+        <span class="bubble-title">${stage.title}</span>
+      </div>
+    `;
+
+    bubble.onclick = function(e) {
+      e.stopPropagation();
+      triggerIndividualBurst(e.clientX, e.clientY);
+      bubble.remove();
+    };
+
+    bubble.addEventListener('animationend', () => {
+      bubble.remove();
+    });
+
+    document.body.appendChild(bubble);
+  }
+
+  // 极速云朵发射控制器
+  function startCloudSpawner() {
+    // 1. 初始化满屏：一打开网页，直接瞬发 5 个散落半空的气泡
+    for(let i = 0; i < 5; i++) {
+      launchSingleCloud(true);
+    }
+    
+    // 2. 随后高速连发：每隔 0.8 秒就从底部喷涌出一个新的云朵气泡
+    setInterval(() => {
+      launchSingleCloud(false);
+    }, 800);
+  }
+
+  function triggerIndividualBurst(x, y) {
+    const emojis = ['✨', '💎', '🌸', '🧡', '💚'];
+    for(let i=0; i<6; i++) {
+      createSingleParticle(x, y, emojis[Math.floor(Math.random()*emojis.length)]);
+    }
+  }
+
+  // ================= 2. 核心互动逻辑处理 =================
   function clearAnimations() {
     const pig = document.getElementById("pigActor");
     const dog = document.getElementById("dogTarget");
-    pig.classList.remove("kiss-action", "shy-action");
-    dog.classList.remove("kiss-back-action", "shy-action");
+    pig.classList.remove("kiss-action", "shy-action", "pig-to-center");
+    dog.classList.remove("kiss-back-action", "shy-action", "dog-to-center");
     void pig.offsetWidth;
     void dog.offsetWidth;
   }
 
-  // 1. 小猪主动去亲小狗
   function pigKissDog() {
     const pig = document.getElementById("pigActor");
     const dog = document.getElementById("dogTarget");
@@ -457,7 +659,6 @@
     }, 320);
   }
 
-  // 2. 小狗主动去亲小猪
   function dogKissPig() {
     const pig = document.getElementById("pigActor");
     const dog = document.getElementById("dogTarget");
@@ -469,46 +670,85 @@
     }, 320);
   }
 
+  // 双向奔赴：小猪和小狗前往中间合体并疯狂爆发出爱心与钻石
+  function doubleLoveInCenter() {
+    const pig = document.getElementById("pigActor");
+    const dog = document.getElementById("dogTarget");
+    clearAnimations();
+    
+    pig.classList.add("pig-to-center");
+    dog.classList.add("dog-to-center");
+
+    // 中路爆发特效（满屏钻石、爱心、樱花）
+    let burstTimer = setInterval(() => {
+      const pRect = pig.getBoundingClientRect();
+      const dRect = dog.getBoundingClientRect();
+      const middleX = (pRect.left + dRect.right) / 2;
+      const middleY = (pRect.top + pRect.bottom) / 2;
+      
+      const emojis = ['❤️', '💖', '💝', '✨', '💎', '🧡', '💚', '🌸'];
+      for(let i=0; i<8; i++) {
+        createSingleParticle(middleX, middleY, emojis[Math.floor(Math.random() * emojis.length)]);
+      }
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(burstTimer);
+      pig.classList.remove("pig-to-center");
+      dog.classList.remove("dog-to-center");
+    }, 1500);
+  }
+
+  function createSingleParticle(centerX, centerY, text) {
+    const heart = document.createElement('div');
+    heart.className = 'burst-heart';
+    heart.innerText = text;
+    heart.style.left = centerX + 'px';
+    heart.style.top = centerY + 'px';
+    
+    const angle = Math.random() * Math.PI * 2;
+    const distance = 50 + Math.random() * 240;
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance;
+    
+    heart.style.setProperty('--x', `${x}px`);
+    heart.style.setProperty('--y', `${y}px`);
+    
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 800);
+  }
+
   function createHeartBurst(targetElement) {
     const rect = targetElement.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const emojis = ['❤️', '💖', '💝', '✨', '🧡', '💚', '🌸'];
+    const emojis = ['❤️', '💖', '💝', '✨', '🧡', '💚', '🌸', '💎'];
 
     for (let i = 0; i < 15; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'burst-heart';
-      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-      heart.style.left = centerX + 'px';
-      heart.style.top = centerY + 'px';
-      
-      const angle = Math.random() * Math.PI * 2;
-      const distance = 80 + Math.random() * 150;
-      const x = Math.cos(angle) * distance;
-      const y = Math.sin(angle) * distance;
-      
-      heart.style.setProperty('--x', `${x}px`);
-      heart.style.setProperty('--y', `${y}px`);
-      
-      document.body.appendChild(heart);
-      
-      setTimeout(() => {
-        heart.remove();
-      }, 800);
+      createSingleParticle(centerX, centerY, emojis[Math.floor(Math.random() * emojis.length)]);
     }
   }
 
   function likeNo() {
     alert("不喜欢极你遭了噻～");
+    setTimeout(() => {
+      doubleLoveInCenter();
+    }, 300);
   }
   
   function likeYes() {
     const el = document.getElementById("thankYou");
     el.classList.add("show");
+    doubleLoveInCenter();
     setTimeout(() => {
       el.classList.remove("show");
     }, 3000);
   }
+
+  // 初始化执行
+  window.addEventListener('DOMContentLoaded', () => {
+    startCloudSpawner();
+  });
 </script>
 </body>
 </html>
