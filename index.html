@@ -16,7 +16,7 @@
     justify-content: space-between;
   }
   
-  /* ================= 页面大框架（紧凑布局） ================= */
+  /* ================= 页面大框架 ================= */
   .top-section {
     height: 50vh;
     display: flex;
@@ -49,7 +49,7 @@
     z-index: 10;
   }
   
-  /* 1. 猪头（张极）亲狗钩轨迹 */
+  /* 小猪主动亲 */
   #pigActor.kiss-action {
     animation: pigKiss 0.5s ease-in-out;
   }
@@ -60,7 +60,7 @@
     100% { transform: scale(1) translateX(0) rotate(0deg); }
   }
 
-  /* 2. 狗钩（左航）亲小猪轨迹 */
+  /* 小狗主动亲 */
   #dogTarget.kiss-back-action {
     animation: dogKissBack 0.5s ease-in-out;
   }
@@ -71,7 +71,7 @@
     100% { transform: scale(1) translateX(0) rotate(0deg); }
   }
 
-  /* 被亲一方的害羞转圈动画 */
+  /* 被亲害羞转圈 */
   .animal-box.shy-action {
     animation: animalShy 0.6s ease-in-out;
   }
@@ -93,7 +93,7 @@
     height: 320px;
   }
   
-  /* 粉色/流金发光星星 */
+  /* 💖 核心修改：全新定制的“特浓魅影粉”发光星星，与背景粉色完美拉开对比 💖 */
   .center-emoji {
     position: absolute;
     left: 50%;
@@ -101,12 +101,14 @@
     transform: translate(-50%, -50%);
     font-size: 110px;
     z-index: 2;
-    filter: drop-shadow(0 0 20px #FFF700) drop-shadow(0 4px 10px rgba(0,0,0,0.3));
-    animation: starBounce 1.2s ease-in-out infinite;
+    color: #FF1493; /* 深邃浓郁的深粉色 */
+    /* 强烈的白色外发光和深色硬朗阴影，确保其在淡粉色背景中极其突出 */
+    filter: drop-shadow(0 0 12px #FFF) drop-shadow(0 0 25px #FF69B4) drop-shadow(0 6px 12px rgba(0,0,0,0.35));
+    animation: pinkStarBounce 1.2s ease-in-out infinite;
   }
-  @keyframes starBounce {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.18); }
+  @keyframes pinkStarBounce {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); text-shadow: 0 0 10px #FFF; }
+    50% { transform: translate(-50%, -50%) scale(1.18); text-shadow: 0 0 25px #FF1493, 0 0 40px #FFF; }
   }
   
   .rotate-ring {
@@ -139,7 +141,7 @@
   
   /* ================= 中部极禹名场面文本区 ================= */
   .middle-section {
-    height: 28vh; /* 略微拔高腾出空间给神仙文案 */
+    height: 28vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -149,13 +151,12 @@
     position: relative;
   }
 
-  /* 💎 新增：“陪你把异乡走成故乡” 专属神仙绝美视觉样式 */
+  /* “陪你把异乡走成故乡” 专属神仙绝美视觉样式 */
   .hometown-text {
     font-size: 42px;
     font-weight: 900;
     text-align: center;
     letter-spacing: 2px;
-    /* 极光霓虹流光渐变效果 */
     background: linear-gradient(90deg, #FF7F00, #fff, #00FF00, #fff, #FF7F00);
     background-size: 200% auto;
     -webkit-background-clip: text;
@@ -191,7 +192,7 @@
     100% { color: #FF7F00; transform: scale(1); }
   }
 
-  /* 极禹99 橘绿交替横向弹幕 */
+  /* 极禹99横向滚动弹幕 */
   .danmaku-container {
     position: absolute;
     width: 100%;
@@ -288,7 +289,7 @@
     50% { transform: translate(-50%, -50%) rotate(5deg) scale(1.05); }
   }
 
-  /* 独立爆开心脏特效 */
+  /* 散射爱心 */
   .burst-heart {
     position: absolute;
     font-size: 45px;
@@ -306,7 +307,6 @@
     .top-section { padding: 0 20px; }
     .animal-box { font-size: 85px; }
     
-    /* 手机端双向路径微调 */
     @keyframes pigKiss {
       0% { transform: scale(1) translateX(0); }
       30% { transform: scale(1.1) translateX(-15px); }
@@ -375,12 +375,13 @@
   <!-- 上部区域 -->
   <div class="top-section">
     <div class="content-box">
-      <!-- 极地小猪（张极 - 点击去亲小狗） -->
+      <!-- 极地小猪 -->
       <div class="animal-box" id="pigActor" onclick="pigKissDog()">🐷</div>
       
-      <!-- 中间旋转文字（我是星星妹呀、中心流金星星） -->
+      <!-- 中间旋转文字 -->
       <div class="circle-text-wrap">
-        <div class="center-emoji">🌟</div>
+        <!-- 核心修改：粉色发光星星 🌟 -->
+        <div class="center-emoji">★</div>
         <div class="rotate-ring">
           <div class="rotate-text text-1">我</div>
           <div class="rotate-text text-2">是</div>
@@ -391,7 +392,7 @@
         </div>
       </div>
       
-      <!-- 垂耳小狗（左航 - 点击也可以去亲小猪） -->
+      <!-- 垂耳小狗 -->
       <div class="animal-box" id="dogTarget" onclick="dogKissPig()">🐶</div>
     </div>
   </div>
@@ -406,14 +407,14 @@
       </div>
     </div>
 
-    <!-- 💎 极禹至高绝美圣经 -->
+    <!-- 极禹至高绝美圣经 -->
     <div class="hometown-text">陪你把异乡走成故乡</div>
 
-    <!-- 极禹名场面细节案 -->
-    <div class="fan-text">这感情不值得我犹豫！</div>
-    <div class="fan-code">情侣飞车，我和张极玩过。</div>
+    <!-- 极禹名场面细节 -->
+    <div class="fan-text">情侣飞车，我和张极玩过。</div>
+    <div class="fan-code">这感情不值得我犹豫！</div>
 
-    <!-- 极禹99横向滚动弹幕（反向） 桔色爱心-->
+    <!-- 极禹99横向滚动弹幕（反向） -->
     <div class="danmaku-container danmaku-bottom">
       <div class="danmaku-track reverse">
         <span>极禹99 💚🧡 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span><span>极禹99 🧡💚 </span>
@@ -432,10 +433,9 @@
   </div>
   
   <!-- 喜欢弹窗 -->
-  <div class="thank-you" id="thankYou">谢谢你！💖<br>🧡极禹99💚</div>
+  <div class="thank-you" id="thankYou">谢谢你！💖</div>
 
 <script>
-  // 清理所有动画类的辅助函数
   function clearAnimations() {
     const pig = document.getElementById("pigActor");
     const dog = document.getElementById("dogTarget");
@@ -449,40 +449,31 @@
   function pigKissDog() {
     const pig = document.getElementById("pigActor");
     const dog = document.getElementById("dogTarget");
-    
     clearAnimations();
-    
     pig.classList.add("kiss-action");
-    
-    // 击中时刻爆爱心，小狗羞红转圈
     setTimeout(() => {
       dog.classList.add("shy-action");
       createHeartBurst(dog);
     }, 320);
   }
 
-  // 2. 小狗主动去亲小猪（新增双向奔赴）
+  // 2. 小狗主动去亲小猪
   function dogKissPig() {
     const pig = document.getElementById("pigActor");
     const dog = document.getElementById("dogTarget");
-    
     clearAnimations();
-    
     dog.classList.add("kiss-back-action");
-    
-    // 击中时刻爆爱心，小猪羞红转圈
     setTimeout(() => {
       pig.classList.add("shy-action");
       createHeartBurst(pig);
     }, 320);
   }
 
-  // 生成满屏爆开的爱心和闪烁特效
   function createHeartBurst(targetElement) {
     const rect = targetElement.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
-    const emojis = ['❤️', '💖', '💝', '✨', '🧡', '💚', '🌟'];
+    const emojis = ['❤️', '💖', '💝', '✨', '🧡', '💚', '🌸'];
 
     for (let i = 0; i < 15; i++) {
       const heart = document.createElement('div');
@@ -507,7 +498,6 @@
     }
   }
 
-  // 不喜欢——地道方言整蛊
   function likeNo() {
     alert("不喜欢极你遭了噻～");
   }
